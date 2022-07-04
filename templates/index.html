@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="my-3 d-flex justify-content-center">
+        <h1 id="title">LICCHART</h1>
+    </div>
+
+    <div class="container d-flex justify-content-center" id="form">
+        <form method="post" enctype="multipart/form-data" class="needs-validation w-75" novalidate>
+            <div class="mb-3">
+                <label for="user" class="form-label">Your Last.fm username</label>
+                <input name="user" id="user" type="text" class="form-control" aria-describedby="userHelp" autocomplete="off" required>
+                <div id="userHelp" class="form-text">Use this if you don't have a CSV file yet. You'll be able to download it.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="file" class="form-label">Or you can upload your LICCHART CSV</label>
+                <input name="file" id="file" type="file" accept=".csv" class="form-control" aria-describedby="fileHelp" required>
+                <div id="fileHelp" class="form-text">Using CSV will speed up the process. You'll also get an updated CSV with all the new scrobbles.</div>
+            </div>
+
+            <div class="mb-3">
+                <div class="row">
+                    <div class="col">
+                        <label for="start" class="form-label">Start date</label>
+                        <input name="start" type="date" class="form-control" aria-describedby="startHelp">
+                        <div id="startHelp" class="form-text">Default is your first scrobble's timestamp.</div>
+                    </div>
+                    <div class="col">
+                        <label for="end" class="form-label">End date</label>
+                        <input name="end" type="date" class="form-control" aria-describedby="endHelp">
+                        <div id="endHelp" class="form-text">Default is your last scrobble's timestamp.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="bars" class="form-label">Number of bars</label>
+                <input name="bars" id="bars" type="number" min="1" max="50" class="form-control" placeholder="Default is 20" aria-describedby="barsHelp">
+                <div id="barsHelp" class="form-text">Integer between 1 and 50 | Determines how many artists will be visible on the chart.</div>
+            </div>
+
+            <div class="mb-3">
+                <div class="row">
+                    <div class="col">
+                        <label for="length" class="form-label">Animation length</label>
+                        <div class="input-group">
+                            <input name="length" id="length" type="number" step="0.1" min="0.1" max="30" class="form-control" placeholder="Default value is dynamic" aria-describedby="lengthHelp">
+                            <span class="input-group-text">minutes</span>
+                        </div>
+                        <div id="lengthHelp" class="form-text">Decimal between 1.0 and 30.0 | Determines how long your animation will be.</div>
+                    </div>
+                    <div class="col">
+                        <label for="smooth" class="form-label">Animation smoothness</label>
+                        <div class="input-group">
+                            <input name="smooth" id="smooth" type="number" min="1" max="60" class="form-control" placeholder="Default is 30" aria-describedby="smoothHelp">
+                            <span class="input-group-text">FPS</span>
+                        </div>
+                        <div id="smoothHelp" class="form-text">Integer between 1 and 60 | More frames take more time to generate.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="api" class="form-label">Custom API</label>
+                <input name="api" id="api" type="text" class="form-control" placeholder="Default is server's own API" aria-describedby="apiHelp" autocomplete="off">
+                <div id="apiHelp" class="form-text">If server's API doesn't respond, you can use your own. Get it <a href="https://www.last.fm/api/account/create">here</a>.</div>
+            </div>
+
+            <div class="mb-4">
+                <p>Period type</p>
+                <div class="form-check form-check-inline">
+                    <input name="type" id="months" type="radio" value="months" class="form-check-input" aria-describedby="monthsHelp" checked>
+                    <label for="months" class="form-check-label">Months</label>
+                    <div id="monthsHelp" class="form-text">Takes less time to generate, but gives a less accurate result.</div>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input name="type" id="days" type="radio" value="days" class="form-check-input">
+                    <label for="days" class="form-check-label">Days</label>
+                    <div id="daysHelp" class="form-text">Takes quite a while to generate, but gives very accurate result.</div>
+                </div>
+            </div>
+
+            <div class="mb-4 d-flex justify-content-center">
+                <input type="submit" value="Make me a bar chart race animation" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+
+    <script src="/static/script.js"></script>
+{% endblock %}

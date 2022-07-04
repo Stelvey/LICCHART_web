@@ -1,0 +1,39 @@
+body {
+    font-size: 15px;
+}
+
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+.input-group-text {
+    width: 150px;
+    justify-content: center;
+}
+
+#title {
+    font-family: 'Libre Barcode 39 Text', cursive;
+    font-size: 60px;
+}
+
+#copyright {
+    color: gray;
+}
+
+
+/* hide scrollbar but allow scrolling */
+body {
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll; 
+}
+
+body::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+
+/* smooth scrolling */
+html {
+    scroll-behavior: smooth;
+  }

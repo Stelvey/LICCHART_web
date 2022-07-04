@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="container mx-auto my-5 mw-50">
+        <div class="mb-3">
+            {% if code == 0 %}
+                <h2>User not found.</h2>
+            {% elif code == 1 %}
+                <h2>Current range has no data.</h2>
+            {% elif code == 2 %}
+                <h2>This is not a correct data file.</h2>
+            {% elif code == 3 %}
+                <h2>Unsupported values.</h2>
+            {% elif code == 4 %}
+                <h2>API doesn't respond.</h2>
+            {% elif code == 5 %}
+                <h2>You're being rate limited.</h2>
+            {% elif code == 6 %}
+                <h2>Invalid API key</h2>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <h3>Please, try <a href="/">again</a>.</h3>
+        </div>
+{% endblock %}
